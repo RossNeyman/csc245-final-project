@@ -12,7 +12,6 @@ from sklearn.preprocessing import StandardScaler
 
 from .data import FEATURE_COLUMNS, TARGET_COLUMNS
 
-
 @st.cache_resource(show_spinner=False)
 def train_regression_model(df: pd.DataFrame) -> Pipeline:
     X = df[FEATURE_COLUMNS]

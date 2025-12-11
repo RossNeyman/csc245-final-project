@@ -78,12 +78,12 @@ def _gather_inputs(df: pd.DataFrame) -> pd.DataFrame:
                 max_value=ai_max,
                 value=ai_default,
                 step=0.25,
-                help="AI usage cannot exceed total coding hours.",
+                help="The number of hours you will be using AI tools to code. AI usage cannot exceed total coding hours.",
             )
             coffee = st.number_input(
                 "Coffee intake (cups)",
                 min_value=int(stats["Coffee_Intake"]["min"]),
-                max_value=int(stats["Coffee_Intake"]["max"]),
+                max_value=int(1000),
                 value=int(stats["Coffee_Intake"]["median"]),
                 step=1,
             )
@@ -124,8 +124,8 @@ def _render_prediction_cards(predictions: dict[str, float]) -> None:
 
 
 def render_predictor(df: pd.DataFrame, model, predict_fn) -> None:
-    st.title("AI Developer Outcome Estimator")
-    st.caption("Feed in project context to see what the linear regression expects for code output, bugs, and commits.")
+    st.title("Developer Productivity Estimator")
+    st.caption("Enter the context of your work session to predict your performance")
 
     sample = _gather_inputs(df)
     if sample.empty:
